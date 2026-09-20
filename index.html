@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Conectados com o Mar</title>
+<link rel="stylesheet" href="fonts.css">
+<link rel="stylesheet" href="./assets/icons/tabler-icons.min.css">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="./assets/favicon1.ico" type="image/png">
+<script src="script.js" defer></script>
+</head>
+<body>
+<div class="app">
+
+<!-- loading screen -->
+<div id="loading-screen" class="loading-screen">
+    <div class="loading-logo">
+        <img src="./assets/logos/logo_text_20p.png" alt="Logo do Conectados com o Mar">
+    </div>
+    <div class="loading-dots"><span></span><span></span><span></span></div>
+</div>
+
+  <!-- desktop-only sidebar -->
+  <nav class="side-nav">
+    <div class="brand">
+      <img src="./assets/logos/logo_text_50p.png" alt="Logo do Conectados com o Mar" class="brand-logo">
+      <span>Conectados com o Mar</span>
+    </div>
+    <a href="#home"><i class="ti ti-home-2"></i>Home</a>
+    <a href="#animais"><i class="ti ti-fish"></i>Animais</a>
+    <a href="#jogos"><i class="ti ti-device-gamepad-2"></i>Jogos</a>
+    <a href="#descarte"><i class="ti ti-recycle"></i>Descarte</a>
+    <a href="#contato"><i class="ti ti-mail"></i>Contato</a>
+  </nav>
+
+  <!-- hide/show sidebar on desktop -->
+  <button id="sidebar-toggle" class="sidebar-toggle" aria-label="Mostrar ou ocultar o menu">
+    <i class="ti ti-chevrons-left"></i>
+  </button>
+
+  <!-- mobile-only topbar -->
+  <header class="topbar">
+    <img src="./assets/logos/logo_text_5p.png" class="icon">
+    <div class="site-name">Conectados com o Mar</div>
+  </header>
+
+  <main>
+    <section id="home">
+      <div class="hero hero-home">
+        <div class="hero-title">Descobrindo a Baía</div>
+        <span class="hero-credit">Foto: Marcos Peretti Maranhão · CC BY-SA 4.0</span>
+      </div>
+      <div class="section-pad">
+        <p class="tagline">Escolha para onde ir</p>
+        <div class="nav-cards">
+          <a class="navbtn blue" href="#jogos"><i class="ti ti-device-gamepad-2"></i>Jogar</a>
+          <a class="navbtn" href="#descarte"><i class="ti ti-recycle"></i>Descarte correto</a>
+          <a class="navbtn coral" href="#animais"><i class="ti ti-fish"></i>Animais da baía</a>
+          <a class="navbtn sun" href="#contato"><i class="ti ti-mail"></i>Fale com a gente</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="animais">
+      <div class="hero hero-animals">
+        <div class="hero-title">Os animais da baía</div>
+          <span class="hero-credit">Foto: Gilberto Mesquita de Melo Romano · CC BY-SA 4.0</span>
+      </div>
+      <div class="section-pad">
+        <div class="animal-list">
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/boto-cinza1.jpg" alt="Boto-cinza"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill">Boto-cinza</span><p>Um golfinho sociável que costuma nadar perto dos barcos de pesca.</p><p class="credit">Foto: Amandine Bordin · CC BY-SA 4.0</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/bigua2.jpg" alt="Biguá"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill" style="background:var(--mangrove)">Biguá</span><p>Mergulha fundo para pescar e depois abre as asas pra secar no sol.</p><p class="credit">Foto: Cesar Augusto Chirosa Horie · CC BY-SA 4.0 · Modificado do original</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/caranguejo-uca1.jpg" alt="Caranguejo-uçá"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill" style="background:var(--coral-dark)">Caranguejo-uçá</span><p>Vive entre as raízes do mangue e ajuda a manter o solo saudável.</p><p class="credit">Foto: Pancrat · CC BY-SA 3.0</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/tartaruga-verde1.jpg" alt="Tartaruga-verde"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill">Tartaruga-verde</span><p>Uma nadadora tranquila que passeia pelas águas da baía e adora se alimentar de algas marinhas.</p><p class="credit">Foto: Charles J. Sharp · CC BY-SA 4.0</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/guara2.jpg" alt="Guará"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill" style="background:var(--mangrove)">Guará</span><p>Uma ave de cor vermelho-vibrante que ganha esse tom lindo ao comer caranguejos no manguezal.</p><p class="credit">Foto: Cesar Augusto Chirosa Horie · CC BY-SA 4.0 · Modificado do original</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/aratu2.jpg" alt="Aratu"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill" style="background:var(--coral-dark)">Aratu</span><p>Um caranguejo avermelhado e muito ágil que adora subir nas raízes e troncos das árvores do mangue.</p><p class="credit">Foto: Ianaré Sévi · CC BY-SA 3.0  · Modificado do original</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/baleia-franca-austral1.jpg" alt="Baleia Franca Austral"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill">Baleia Franca Austral</span><p>Uma gigante dos oceanos que visita águas calmas para cuidar de seus filhotes.</p><p class="credit">Foto: Michaël Catanzariti · CC BY-SA 4.0</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/garca-branca-grande2.jpg" alt="Garça-branca-grande"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill" style="background:var(--mangrove)">Garça-branca-grande</span><p>Caminha devagar pelas águas rasas e usa seu bico comprido para pescar num piscar de olhos.</p><p class="credit">Foto: Cesar Augusto Chirosa Horie · CC BY-SA 4.0 · Modificado do original</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar zoomable"><img src="./assets/animals/jacare-de-papo-amarelo1.jpg" alt="Jacaré de Papo Amarelo"><span class="zoom-badge"><i class="ti ti-zoom-in"></i></span></div>
+            <div><span class="name-pill" style="background:var(--coral-dark)">Jacaré de Papo Amarelo</span><p>Um réptil silencioso que adora tomar sol na beira da água para aquecer o corpo.</p><p class="credit">Foto: TimSagorski · CC BY-SA 4.0 </p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jogos">
+      <div class="hero hero-jogos">
+        <div class="hero-title">Hora de brincar!</div>
+          <span class="hero-credit">Foto: Wadco · CC BY-SA 4.0</span>
+      </div>
+      <div class="section-pad">
+        <div class="game-grid">
+          <div class="game-tile c1" data-game="memoria" role="button" tabindex="0"><i class="ti ti-cards"></i><span class="name">Jogo da memória</span><span class="play"><i class="ti ti-player-play"></i>Jogar</span></div>
+          <div class="game-tile c2" data-game="cruzadinha" role="button" tabindex="0"><i class="ti ti-puzzle"></i><span class="name">Cruzadinha</span><span class="play"><i class="ti ti-player-play"></i>Jogar</span></div>
+          <div class="game-tile c3" data-game="cacapalavras" role="button" tabindex="0"><i class="ti ti-search"></i><span class="name">Caça-palavras</span><span class="play"><i class="ti ti-player-play"></i>Jogar</span></div>
+          <div class="game-tile c4" data-game="conectar" role="button" tabindex="0"><i class="ti ti-arrows-join"></i><span class="name">Conecte as palavras</span><span class="play"><i class="ti ti-player-play"></i>Jogar</span></div>
+          <div class="game-tile c5" data-game="descarte" role="button" tabindex="0"><i class="ti ti-recycle"></i><span class="name">Descarte correto</span><span class="play"><i class="ti ti-player-play"></i>Jogar</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="descarte">
+      <div class="hero hero-descarte">
+        <div class="hero-title">Descarte correto</div>
+        <span class="hero-credit">Foto: Vitor Corrêa Dias · CC BY-SA 4.0</span>
+      </div>
+      <div class="section-pad">
+        <p class="tagline">Cada lixo tem um tempo diferente pra sumir da natureza — alguns nunca somem</p>
+        <div class="animal-list">
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-apple"></i></div>
+            <div><span class="name-pill">Casca de fruta</span><p><strong>2 a 12 meses</strong> pra decompor. Pode ir no lixo orgânico ou na compostagem — é o que mais rápido desaparece.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-smoking"></i></div>
+            <div><span class="name-pill" style="background:var(--coral-dark)">Bituca de cigarro</span><p><strong>Mais de 5 anos</strong> pra decompor, e ainda solta veneno na água. Nunca jogue na areia — leve até uma lixeira.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-bottle"></i></div>
+            <div><span class="name-pill" style="background:var(--mangrove)">Garrafa/sacola plástica</span><p><strong>Mais de 400 anos</strong> pra decompor. Separe pra reciclagem — plástico no mar vira pedacinhos que os animais confundem com comida.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-trash"></i></div>
+            <div><span class="name-pill" style="background:var(--coral-dark)">Lata de alumínio</span><p><strong>Mais de 200 anos</strong> pra decompor. É 100% reciclável — sempre separe pra reciclagem.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-glass-full"></i></div>
+            <div><span class="name-pill">Garrafa de vidro</span><p><strong>Tempo indeterminado</strong> — o vidro praticamente não desaparece da natureza. Recicle sempre, e nunca deixe na areia, porque quebrado machuca.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-box"></i></div>
+            <div><span class="name-pill" style="background:var(--mangrove)">Isopor</span><p><strong>Tempo indeterminado</strong> — não se decompõe, só se quebra em pedaços cada vez menores. Evite usar e descarte no lixo comum bem fechado.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-anchor"></i></div>
+            <div><span class="name-pill" style="background:var(--coral-dark)">Rede/linha de pesca</span><p><strong>Mais de 20 anos</strong> pra decompor. É um dos maiores perigos pra animais marinhos, que ficam presos nela — nunca abandone na água.</p></div>
+          </div>
+          <div class="animal-card">
+            <div class="avatar"><i class="ti ti-circle"></i></div>
+            <div><span class="name-pill">Pneu</span><p><strong>Tempo indeterminado</strong> pra decompor. Leve pra um ponto de coleta — muitos lugares reaproveitam pneus velhos.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contato">
+      <div class="hero hero-contato">
+        <div class="hero-title">Fale com a gente</div>
+          <span class="hero-credit">Foto: Peter Southwood · CC BY-SA 3.0</span>
+      </div>
+      <div class="section-pad">
+        <p class="tagline">Dúvidas, sugestões ou correções? Manda pra gente!</p>
+
+        <form id="contact-form" class="contact-form">
+          <label for="contact-name">Seu nome</label>
+          <input type="text" id="contact-name" name="name" placeholder="Como podemos te chamar?" required>
+
+          <label for="contact-message">Mensagem</label>
+          <textarea id="contact-message" name="message" rows="4" placeholder="Escreva sua sugestão ou dúvida aqui" required></textarea>
+
+          <button type="submit" class="navbtn blue"><i class="ti ti-send"></i>Enviar mensagem</button>
+        </form>
+
+        <p class="tagline" style="margin-top:28px">Ou fale direto por aqui</p>
+        <div class="nav-cards">
+          <a class="navbtn coral" href="mailto:luizambdacosta@gmail.com"><i class="ti ti-mail"></i>luizambdacosta@gmail.com</a>
+          <a class="navbtn sun" href="https://instagram.com/lu.melchor" target="_blank" rel="noopener"><i class="ti ti-brand-instagram"></i>@lu.melchor</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- mobile-only bottom tab bar -->
+  <nav class="bottom-nav">
+    <a href="#home"><i class="ti ti-home-2"></i>Home</a>
+    <a href="#animais"><i class="ti ti-fish"></i>Animais</a>
+    <a href="#jogos"><i class="ti ti-device-gamepad-2"></i>Jogos</a>
+    <a href="#descarte"><i class="ti ti-recycle"></i>Descarte</a>
+    <a href="#contato"><i class="ti ti-mail"></i>Contato</a>
+  </nav>
+
+  <!-- mini games overlay -->
+  <div id="game-overlay" class="game-overlay" aria-hidden="true">
+    <div class="game-panel">
+      <button id="game-close" class="game-close" aria-label="Fechar jogo"><i class="ti ti-x"></i></button>
+      <div id="game-content"></div>
+    </div>
+  </div>
+  
+  <div id="zoom-overlay" class="zoom-overlay" aria-hidden="true">
+    <div class="zoom-panel">
+      <button id="zoom-close" class="game-close" aria-label="Fechar"><i class="ti ti-x"></i></button>
+      <div class="zoom-img-wrap">
+        <img id="zoom-img" src="" alt="">
+      </div>
+      <div class="zoom-info">
+        <span id="zoom-name" class="name-pill"></span>
+        <p id="zoom-desc"></p>
+      </div>
+      <div class="zoom-controls">
+        <button id="zoom-out" class="zoom-btn" aria-label="Diminuir zoom"><i class="ti ti-zoom-out"></i></button>
+        <button id="zoom-reset" class="zoom-btn" aria-label="Zoom normal"><i class="ti ti-focus-2"></i></button>
+        <button id="zoom-in" class="zoom-btn" aria-label="Aumentar zoom"><i class="ti ti-zoom-in"></i></button>
+      </div>
+      <p class="zoom-hint">Toque duas vezes na foto pra dar zoom rápido</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

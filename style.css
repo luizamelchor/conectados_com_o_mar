@@ -1,0 +1,1214 @@
+:root{
+    --bay-deep:#0E4C63; 
+    --bay-blue:#2C90B0; 
+    --bay-blue-light:#BFE6F0;
+    --mangrove:#3F7D52; 
+    --mangrove-light:#D8ECD4;
+    --sand:#FBF3DC; 
+    --sand-dark:#F0E4C4;
+    --coral:#F2984D; 
+    --coral-dark:#B85E1E;
+    --sun:#F6C445; 
+    --sun-dark:#8C6A10;
+    --ink:#16302E; 
+    --ink-soft:#3E5654;
+    --nav-h:64px; 
+    --side-w:220px;
+}
+* {
+    box-sizing:border-box;
+}
+
+html {
+    scroll-behavior:smooth;
+}
+
+body {
+    margin:0;
+    background:var(--sand);
+    color:var(--ink);
+    font-family:'Nunito',sans-serif;
+}
+
+body.is-loading {
+    overflow: hidden;
+}
+
+/* ---------- tela de carregamento ---------- */
+.loading-screen {
+    position:fixed;
+    inset:0;
+    z-index:100;
+    background:radial-gradient(circle at 50% 30%, var(--bay-blue) 0%, var(--bay-deep) 70%);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    transition:opacity .5s ease, visibility .5s ease;
+}
+
+.loading-screen.hide {
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.loading-logo {
+    width:150px;
+    aspect-ratio:133 / 118;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    animation:pulse 1.4s ease-in-out infinite;
+}
+
+.loading-logo img {
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    display:block;
+}
+
+.loading-text {
+    color:#fff;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:18px;
+    letter-spacing:.3px;
+}
+
+.loading-dots {
+    display:flex;
+    gap:7px;
+}
+
+.loading-dots span {
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--bay-blue-light);
+    animation:bounce 1s infinite ease-in-out;
+}
+
+.loading-dots span:nth-child(2) {
+    animation-delay:.15s;
+}
+
+.loading-dots span:nth-child(3) {
+    animation-delay:.3s;
+}
+
+@keyframes pulse{
+    0%,100% {
+        transform:scale(1);
+    }
+
+    50% {
+        transform:scale(1.1);
+    }
+}
+@keyframes bounce{
+    0%,80%,100% {
+        transform:translateY(0);
+        opacity:.5;
+    }
+
+    40% {
+        transform:translateY(-7px);
+        opacity:1;
+    }
+}
+
+h1,h2,h3 {
+    font-family:'Baloo 2',sans-serif;
+    margin:0;
+    color:var(--ink);
+}
+
+a {
+    text-decoration:none;
+    color:inherit;
+}
+
+/* ---------- topbar (mobile) ---------- */
+.topbar {
+    position:sticky;
+    top:0;
+    z-index:20;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    height:62px;
+    padding:0 16px;
+    background:var(--bay-deep);
+    color:#fff;
+}
+.topbar .logo-dot {
+    width:26px;
+    height:26px;
+    border-radius:50%;
+    background:var(--sun);
+    flex-shrink:0;
+}
+
+.topbar .site-name {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:17px;
+}
+
+/* ---------- app shell ---------- */
+.app {
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
+
+main {
+    flex:1;
+    padding-bottom:calc(var(--nav-h) + 16px);
+}
+
+/* ---------- bottom nav (mobile) ---------- */
+.bottom-nav {
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:var(--nav-h);
+    background:#fff;
+    border-top:1px solid var(--sand-dark);
+    display:flex;z-index:30;
+    }
+
+.bottom-nav a {
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    font-size:11px;
+    font-weight:800;
+    color:var(--ink-soft);
+    transition:color .15s ease;
+}
+
+.bottom-nav a i {
+    font-size:20px;
+}
+
+.bottom-nav a span.label {
+    transition:font-size .25s ease, opacity .25s ease, max-height .25s ease;
+}
+
+.bottom-nav a.active {
+    color:var(--bay-blue);
+}
+
+/* estado "encolhido" ao rolar a página para baixo */
+.bottom-nav.shrink {
+    height:44px;
+    box-shadow:0 -4px 12px rgba(14,76,99,.10);
+}
+
+.bottom-nav.shrink a {
+    gap:0;
+}
+
+.bottom-nav.shrink a i {
+    font-size:16px;
+}
+
+.bottom-nav.shrink a span.label {
+    font-size:0;
+    opacity:0;
+    max-height:0;
+}
+
+/* ---------- side nav (desktop, hidden by default) ---------- */
+.side-nav {
+    display:none;
+}
+
+/* botão de esconder/mostrar o menu só existe a partir do desktop */
+.sidebar-toggle {
+    display:none;
+}
+
+section {
+    scroll-margin-top:56px;
+}
+
+/* ---------- shared hero ---------- */
+.hero {
+    position:relative;
+    height:190px;
+    overflow:hidden;
+    background-color:var(--bay-deep);
+    background-size:cover;
+    background-position:center;
+}
+
+.hero::after {
+    content:'';
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 65%);
+    z-index:1;
+}
+
+.hero svg {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+}
+
+.hero .hero-title {
+    position:absolute;
+    left:20px;
+    bottom:18px;
+    z-index:2;
+    color:#fff;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:24px;
+    text-shadow:0 2px 6px rgba(0,0,0,.25);
+    }
+
+/* foto de fundo de cada seção — troque o caminho pela sua imagem */
+.hero-home {
+    background-image:url('./assets/backgrounds/baiadeparanagua.jpg');
+}
+
+.hero-animals {
+    background-image:url('./assets/backgrounds/manguezal.jpg');
+}
+
+.hero-jogos {
+    background-image:url('./assets/backgrounds/estrela-do-mar.jpg');
+}
+
+.hero-descarte {
+    background-image:url('./assets/backgrounds/jacare.jpeg');
+    background-color:var(--coral-dark);
+}
+
+.hero-contato {
+    background-image:url('./assets/backgrounds/corais.jpg');
+    background-color:var(--bay-blue);
+}
+
+.hero .hero-credit {
+    position:absolute;
+    right:14px;
+    bottom:8px;
+    z-index:2;
+    font-size:10px;
+    font-style:italic;
+    color:#fff;
+    opacity:.6;
+    text-shadow:0 1px 3px rgba(0,0,0,.4);
+}
+
+.section-pad {
+    padding:20px 18px 40px;
+    max-width:1100px;
+    margin:0 auto;
+}
+
+.tagline {
+    font-size:13px;
+    color:var(--ink-soft);
+    margin:0 0 16px;
+}
+
+/* ---------- Home: nav cards ---------- */
+.nav-cards {
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.navbtn {
+    display:flex;
+    align-items:center;
+    gap:12px;
+    background:var(--mangrove-light);
+    border-radius:16px;padding:16px;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:16px;
+    }
+
+.navbtn i {
+    font-size:22px;
+    color:var(--mangrove);
+}
+
+.navbtn.blue {
+    background:var(--bay-blue-light);
+}
+
+.navbtn.blue i {
+    color:var(--bay-deep);
+}
+
+.navbtn.coral {
+    background:#FBE1C9;
+}
+
+.navbtn.coral i {
+    color:var(--coral-dark);
+}
+
+.navbtn.sun {
+    background:#FDECC0;
+}
+
+.navbtn.sun i {
+    color:var(--sun-dark);
+}
+
+/* ---------- Contato: formulário ---------- */
+.contact-form {
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    margin-bottom:8px;
+}
+
+.contact-form label {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    color:var(--ink);
+    margin-top:10px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    font-family:'Nunito',sans-serif;
+    font-size:14px;
+    color:var(--ink);
+    background:#fff;
+    border:2px solid var(--sand-dark);
+    border-radius:14px;
+    padding:12px 14px;
+    resize:vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline:none;
+    border-color:var(--bay-blue);
+}
+
+.contact-form button {
+    margin-top:14px;
+    border:none;
+    width:100%;
+    cursor:pointer;
+    font-family:'Baloo 2',sans-serif;
+}
+
+/* ---------- Animals: cards ---------- */
+.animal-list {
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+}
+
+.animal-card {
+    display:flex;
+    gap:14px;
+    align-items:flex-start;
+    background:#fff;
+    border:2px solid var(--sand-dark);
+    border-radius:18px;
+    padding:14px;
+}
+
+.animal-card .avatar {
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:var(--sand);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+}
+
+.animal-card .avatar img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:50%;
+}
+
+.name-pill {
+    display:inline-block;
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:13px;
+    background:var(--bay-blue);
+    color:#fff;
+    border-radius:20px;
+    padding:3px 12px;
+    margin-bottom:6px;
+}
+
+.animal-card p {
+    margin:0;
+    font-size:14px;
+    line-height:1.5;
+    color:var(--ink-soft);
+}
+
+.animal-card .credit {
+    font-size:11px;
+    font-style:italic;
+    color:var(--ink-soft);
+    opacity:.65;
+    margin-top:6px;
+}
+
+/* ---------- Jogos: tiles ---------- */
+.game-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.game-tile {
+    background:#fff;
+    border:2px solid var(--sand-dark);
+    border-radius:18px;
+    padding:20px 10px;
+    text-align:center;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+}
+
+.game-tile i {
+    font-size:28px;
+}
+
+.game-tile.c1 {
+    background:var(--bay-blue-light);
+}
+
+.game-tile.c1 i {
+    color:var(--bay-deep);
+}
+.game-tile.c2 {
+    background:var(--mangrove-light);
+}
+
+.game-tile.c2 i {
+    color:var(--mangrove);
+}
+
+.game-tile.c3 {
+    background:#FBE1C9;
+}
+
+.game-tile.c3 i {
+    color:var(--coral-dark);
+}
+
+.game-tile.c4 {
+    background:#FDECC0;
+}
+
+.game-tile.c4 i {
+    color:var(--sun-dark);
+}
+
+.game-tile .name {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:14px;
+}
+
+.game-tile .play {
+    font-size:11px;
+    font-weight:800;
+    color:var(--ink-soft);
+    display:flex;
+    align-items:center;
+    gap:4px;
+}
+
+.game-tile.c5 {
+    background:#D9F2ED;
+}
+
+.game-tile.c5 i {
+    color:var(--bay-deep);
+}
+
+/* ---------- Animals: zoom ---------- */
+.animal-card .avatar.zoomable {
+    position:relative;
+    cursor:zoom-in;
+    transition:transform .15s ease;
+}
+
+.animal-card .avatar.zoomable:hover,
+.animal-card .avatar.zoomable:focus-visible {
+    transform:scale(1.06);
+}
+
+.zoom-badge {
+    position:absolute;
+    right:-2px;
+    bottom:-2px;
+    width:22px;
+    height:22px;
+    border-radius:50%;
+    background:var(--bay-blue);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+    border:2px solid #fff;
+    pointer-events:none;
+}
+
+.zoom-overlay {
+    position:fixed;
+    inset:0;
+    z-index:220;
+    background:rgba(14,48,46,.75);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+}
+
+.zoom-overlay.open {
+    opacity:1;
+    visibility:visible;
+}
+
+.zoom-panel {
+    position:relative;
+    background:#fff;
+    border-radius:24px;
+    width:100%;
+    max-width:480px;
+    max-height:90vh;
+    overflow-y:auto;
+    padding:28px 20px 20px;
+    text-align:center;
+}
+
+.zoom-img-wrap {
+    width:100%;
+    aspect-ratio:1/1;
+    border-radius:18px;
+    overflow:hidden;
+    background:var(--sand);
+    touch-action:pan-x pan-y;
+}
+
+.zoom-img-wrap img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform-origin:center center;
+    transition:transform .2s ease;
+    cursor:zoom-in;
+}
+
+.zoom-info {
+    margin-top:14px;
+}
+
+.zoom-info p {
+    margin:6px 0 0;
+    font-size:14px;
+    line-height:1.5;
+    color:var(--ink-soft);
+}
+
+.zoom-controls {
+    display:flex;
+    justify-content:center;
+    gap:10px;
+    margin-top:16px;
+}
+
+.zoom-btn {
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    border:2px solid var(--sand-dark);
+    background:#fff;
+    color:var(--bay-deep);
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.zoom-btn:hover {
+    background:var(--bay-blue-light);
+}
+
+.zoom-hint {
+    margin:14px 0 0;
+    font-size:11px;
+    color:var(--ink-soft);
+    opacity:.7;
+}
+
+/* ---------- Jogo: Descarte correto ---------- */
+.trash-stage {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+}
+
+.trash-item {
+    width:100%;
+    background:var(--sand);
+    border:2px solid var(--sand-dark);
+    border-radius:18px;
+    padding:26px 14px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+    text-align:center;
+}
+
+.trash-item i {
+    font-size:40px;
+    color:var(--coral-dark);
+}
+
+.trash-item span {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    color:var(--ink);
+}
+
+.trash-item.shake {
+    animation:connect-shake .3s ease;
+}
+
+.trash-item.correct-pop {
+    animation:trash-pop .35s ease;
+}
+
+@keyframes trash-pop {
+    0% { transform:scale(1); }
+    50% { transform:scale(1.05); }
+    100% { transform:scale(1); }
+}
+
+.trash-feedback {
+    min-height:36px;
+    font-size:13px;
+    line-height:1.4;
+    color:var(--ink-soft);
+    margin:0;
+}
+
+.trash-feedback.right {
+    color:var(--mangrove);
+    font-weight:700;
+}
+
+.trash-feedback.wrong {
+    color:var(--coral-dark);
+    font-weight:700;
+}
+
+.trash-bins {
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.trash-bin {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:12px;
+    background:var(--mangrove-light);
+    color:var(--mangrove);
+    border:2px solid transparent;
+    border-radius:14px;
+    padding:12px 4px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:6px;
+    cursor:pointer;
+}
+
+.trash-bin i {
+    font-size:20px;
+}
+
+.trash-bin[data-bin="reciclavel"] {
+    background:var(--bay-blue-light);
+    color:var(--bay-deep);
+}
+
+.trash-bin[data-bin="rejeito"] {
+    background:#FBE1C9;
+    color:var(--coral-dark);
+}
+
+.trash-bin:hover {
+    border-color:currentColor;
+}
+
+
+/* =========================================================
+    DESKTOP BREAKPOINT — layout reflows for PC use
+   ========================================================= */
+@media (min-width:900px) {
+    .app {
+        flex-direction:row;
+    }
+    .topbar {
+        display:none;
+    }
+
+    .side-nav {
+        display:flex;
+        flex-direction:column;
+        gap:4px;
+        position:sticky;
+        top:0;
+        height:100vh;
+        width:var(--side-w);
+        background:var(--bay-deep);
+        color:#fff;
+        padding:20px 14px;
+        flex-shrink:0;
+        overflow:hidden;
+        white-space:nowrap;
+        transition:width .25s ease, padding .25s ease;
+    }
+
+    .side-nav.collapsed {
+        width:0;
+        padding-left:0;
+        padding-right:0;
+    }
+
+    .sidebar-toggle {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:fixed;
+        top:16px;
+        left:16px;
+        width:36px;
+        height:36px;
+        border:none;
+        border-radius:10px;
+        background:var(--bay-deep);
+        color:#fff;
+        font-size:18px;
+        cursor:pointer;
+        z-index:40;
+        box-shadow:0 4px 10px rgba(14,76,99,.25);
+        transition:background .15s ease, left .25s ease;
+    }
+
+    .sidebar-toggle:hover {
+        background:var(--bay-blue);
+    }
+
+    .side-nav .brand {
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+        gap:8px;
+        margin-bottom:28px;
+    }
+
+    .side-nav .brand .brand-logo {
+        width:96px;
+        height:auto;
+        display:block;
+    }
+
+    .side-nav .brand span {
+        font-family:'Baloo 2',sans-serif;
+        font-weight:700;
+        font-size:16px;
+        line-height:1.2;
+    }
+
+    .side-nav a {
+        display:flex;
+        align-items:center;
+        gap:12px;
+        padding:12px 12px;
+        border-radius:12px;
+        font-weight:700;
+        font-size:14px;
+        color:#DCEEF3;
+        transition:background .15s ease,color .15s ease;
+    }
+
+    .side-nav a i {
+        font-size:19px;
+    }
+
+    .side-nav a:hover {
+        background:rgba(255,255,255,.1);
+    }
+
+    .side-nav a.active {
+        background:rgba(255,255,255,.14);
+        color:#fff;
+    }
+
+    .bottom-nav {
+        display:none;
+    }
+
+    main {
+        padding-bottom:40px;
+    }
+
+    .hero {
+        height:280px;
+    }
+
+    .hero .hero-title {
+        font-size:34px;
+        left:40px;
+        bottom:28px;
+    }
+
+    .section-pad {
+        padding:36px 48px 56px;
+    }
+
+    .nav-cards {
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .navbtn{
+        flex:1 1 calc(50% - 12px);
+    }
+
+    .animal-list {
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+
+    .animal-card {
+        flex:1 1 calc(33.33% - 14px);
+        flex-direction:column;
+        text-align:left;
+    }
+
+    .animal-card .avatar {
+        width:72px;
+        height:72px;
+    }
+
+    .animal-card .avatar img {
+        width:100%;
+        height:100%;
+    }
+
+    .game-grid {
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+/* ---------- Overlay dos mini-jogos ---------- */
+body.no-scroll {
+    overflow:hidden;
+}
+
+.game-tile {
+    cursor:pointer;
+}
+
+.game-tile:focus-visible {
+    outline:3px solid var(--bay-blue);
+    outline-offset:2px;
+}
+
+.game-overlay {
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:rgba(14,48,46,.6);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    opacity:0;
+    visibility:hidden;
+    transition:opacity .25s ease, visibility .25s ease;
+}
+
+.game-overlay.open {
+    opacity:1;
+    visibility:visible;
+}
+
+.game-panel {
+    position:relative;
+    background:#fff;
+    border-radius:24px;
+    width:100%;
+    max-width:480px;
+    max-height:88vh;
+    overflow-y:auto;
+    padding:28px 20px 24px;
+}
+
+.game-close {
+    position:absolute;
+    top:14px;
+    right:14px;
+    z-index:10;
+    width:34px;
+    height:34px;
+    border:none;
+    border-radius:50%;
+    background:var(--sand);
+    color:var(--ink);
+    font-size:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+    box-shadow:0 2px 6px rgba(0,0,0,.25);
+}
+
+.game-title {
+    font-size:20px;
+    margin:0 0 8px;
+    padding-right:36px;
+}
+
+.game-instructions {
+    font-size:14px;
+    color:var(--ink-soft);
+    margin:0 0 14px;
+}
+
+.game-progress {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--bay-blue);
+    margin:0 0 16px;
+}
+
+/* ---------- Jogo: Conecte as palavras ---------- */
+.connect-grid {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.connect-col {
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.connect-tile {
+    font-family:'Nunito',sans-serif;
+    font-size:13px;
+    line-height:1.3;
+    text-align:left;
+    background:var(--sand);
+    border:2px solid var(--sand-dark);
+    border-radius:12px;
+    padding:10px 12px;
+    cursor:pointer;
+    color:var(--ink);
+    transition:background .15s ease, border-color .15s ease;
+}
+
+.connect-tile.selected {
+    border-color:var(--bay-blue);
+    background:var(--bay-blue-light);
+}
+
+.connect-tile.matched {
+    border-color:var(--mangrove);
+    background:var(--mangrove-light);
+    cursor:default;
+    opacity:.75;
+}
+
+.connect-tile.wrong {
+    border-color:var(--coral-dark);
+    background:#FBE1C9;
+    animation:connect-shake .3s ease;
+}
+
+@keyframes connect-shake {
+    0%, 100% { transform:translateX(0); }
+    25% { transform:translateX(-4px); }
+    75% { transform:translateX(4px); }
+}
+
+.game-win {
+    margin-top:20px;
+    text-align:center;
+}
+
+.game-win p {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:700;
+    font-size:16px;
+    margin:0 0 12px;
+}
+
+.game-win button {
+    border:none;
+    cursor:pointer;
+    font-family:'Baloo 2',sans-serif;
+}
+
+/* ---------- Jogo: Jogo da memória ---------- */
+.memory-grid {
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:8px;
+}
+
+.memory-card {
+    aspect-ratio:1;
+    border:none;
+    background:none;
+    padding:0;
+    cursor:pointer;
+    perspective:600px;
+}
+
+.memory-card-inner {
+    position:relative;
+    width:100%;
+    height:100%;
+    display:block;
+    transition:transform .4s ease;
+    transform-style:preserve-3d;
+}
+
+.memory-card.flipped .memory-card-inner,
+.memory-card.matched .memory-card-inner {
+    transform:rotateY(180deg);
+}
+
+.memory-card-face {
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    backface-visibility:hidden;
+    overflow:hidden;
+}
+
+.memory-card-back {
+    background:var(--bay-blue);
+    color:#fff;
+    font-size:22px;
+}
+
+.memory-card-front {
+    background:var(--sand);
+    transform:rotateY(180deg);
+}
+
+.memory-card-front img {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.memory-card.matched .memory-card-back,
+.memory-card.matched .memory-card-front {
+    opacity:.6;
+}
+
+/* ---------- Jogo: Caça-palavras ---------- */
+.ws-words {
+    display:flex;
+    flex-wrap:wrap;
+    gap:6px;
+    margin-bottom:14px;
+}
+
+.ws-word {
+    font-family:'Baloo 2',sans-serif;
+    font-weight:600;
+    font-size:12px;
+    background:var(--sand);
+    border:2px solid var(--sand-dark);
+    border-radius:20px;
+    padding:4px 10px;
+    color:var(--ink);
+}
+
+.ws-word.found {
+    background:var(--mangrove-light);
+    border-color:var(--mangrove);
+    color:var(--mangrove);
+    text-decoration:line-through;
+}
+
+.ws-grid {
+    display:grid;
+    gap:2px;
+    touch-action:none;
+    user-select:none;
+    margin-bottom:8px;
+}
+
+.ws-cell {
+    aspect-ratio:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:var(--sand);
+    border-radius:4px;
+    font-family:'Nunito',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:var(--ink);
+}
+
+.ws-cell.selecting {
+    background:var(--bay-blue-light);
+}
+
+.ws-cell.found {
+    background:var(--mangrove-light);
+    color:var(--mangrove);
+}
